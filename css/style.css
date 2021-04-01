@@ -18,6 +18,7 @@ body {
     --text-color: #000;
     --desc-text-color: #555;
     height: 100vh;
+    font-family: "zpix";
     color: var(--text-color);
     background-color: var(--page-bg-color);
 }
@@ -63,9 +64,6 @@ body.loading::after {
     }
 }
 /* 页面 loading 样式 end */
-body {
-    font-family: "zpix";
-}
 main {
     height: 100%;
     display: flex;

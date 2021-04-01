@@ -11,9 +11,9 @@ function completeLoading() {
 /* 检查是否使用 DarkMode */
 function checkNight() {
     let night = false;
-    if (window.matchMedia("prefers-color-scheme: dary").matches) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         night = true;
-    } else if (!window.matchMedia("prefers-color-scheme: day").matches) {
+    } else if (!window.matchMedia("(prefers-color-scheme: light)").matches) {
         let currentHours = new Date().getHours();
         if (currentHours < 6 || currentHours > 18) {
             night = true;

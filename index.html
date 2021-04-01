@@ -15,7 +15,7 @@
     <script>
         // 页面首次加载
         if (window.performance.navigation.type == 0) {
-            $("body").addClass("loading");
+            document.querySelector("body").className += " loading";
         }
     </script>
     <main>
