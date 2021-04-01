@@ -8,8 +8,8 @@ function completeLoading() {
         $("body").removeClass("loading");
     }, 500);
 }
+/* 检查是否使用 DarkMode */
 function checkNight() {
-    // 夜间
     let night = false;
     if (window.matchMedia("prefers-color-scheme: dary").matches) {
         night = true;
@@ -20,6 +20,6 @@ function checkNight() {
         }
     }
     if (night) {
-        $("body").addClass("night");
+        $("body").addClass("dark");
     }
 }
