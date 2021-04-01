@@ -1,0 +1,98 @@
+@font-face {
+    font-family: "zpix";
+    src: url("../asset/fonts/zpix.woff");
+}
+/* reset start */
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/* reset end */
+body {
+    height: 100vh;
+    background-color: #f7f4e6;
+}
+/* 页面 loading 样式 start */
+body.loading {
+    --stripe-color-one: #f7f4e6;
+    --stripe-color-two: #f3e190;
+    --stripe-width: 50px;
+    position: relative;
+}
+body.loading::after {
+    content: "";
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--stripe-color-one) 25%, var(--stripe-color-two) 25%, var(--stripe-color-two) 50%, var(--stripe-color-one) 50%,var(--stripe-color-one) 75%, var(--stripe-color-two) 75%);
+    background-size: var(--stripe-width) var(--stripe-width);
+    animation: backgroudScroll 1s linear infinite;
+}
+@keyframes backgroudScroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: var(--stripe-width) 0;
+    }
+}
+/* 页面 loading 样式 end */
+body {
+    font-family: "zpix";
+}
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container p {
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.container a {
+    position: relative;
+    margin: 0 5px;
+    color: inherit;
+    text-decoration: none;
+}
+.container a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #555;
+    will-change: transform;
+    transition: transform .4s;
+}
+.container a:hover {
+    color: red;
+}
+.container a:hover::after {
+    transform: scaleX(0);
+}
+footer {
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+footer .site_name {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #000;
+}
+footer .update {
+    margin-bottom: 4px;
+}
+footer .iconfont {
+    vertical-align: middle;
+    font-size: inherit;
+}
