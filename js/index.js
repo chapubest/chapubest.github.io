@@ -23,3 +23,7 @@ function checkNight() {
         $("body").addClass("dark");
     }
 }
+/* dark-mode 切换 */
+$(".dark-mode svg").on("click", function(e) {
+    $("body").toggleClass("dark");
+})

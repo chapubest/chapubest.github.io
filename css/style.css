@@ -1,7 +1,3 @@
-@font-face {
-    font-family: "zpix";
-    src: url("../asset/fonts/zpix.woff");
-}
 /* reset start */
 * {
     margin: 0;
@@ -9,16 +5,23 @@
     border: none;
 }
 a {
+    cursor: pointer;
     color: inherit;
     text-decoration: none;
 }
+ul {
+    list-style: none;
+}
 /* reset end */
+@font-face {
+    font-family: "zpix";
+    src: url("../asset/fonts/zpix.woff");
+}
 body {
     --page-bg-color: #f7f4e6;
-    --text-color: #000;
-    --desc-text-color: #555;
-    height: 100vh;
-    font-family: "zpix";
+    --text-color: #292929;
+    --desc-text-color: #757575;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     color: var(--text-color);
     background-color: var(--page-bg-color);
 }
@@ -64,21 +67,96 @@ body.loading::after {
     }
 }
 /* 页面 loading 样式 end */
-main {
-    height: 100%;
+.container {
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
-.container p {
-    line-height: 20px;
-    margin-bottom: 5px;
+/* 侧边栏信息 */
+.container aside {
+    padding-right: 20px;
+    width: 25%;
+    max-width: 300px;
+    text-align: right;
+    color: var(--desc-text-color);
 }
-.container a {
+/* 正文 */
+.container main {
+    flex-grow: 1;
+}
+.container main header {
+    padding: 10px 0;
+}
+.container main section {
+    margin-bottom: 20px;
+}
+/* 段落 标题 */
+.container main section h2 {
     position: relative;
-    margin: 0 5px;
+    width: fit-content;
+    height: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    font-size: 19px;
 }
-.container a::after {
+.container main section h2:hover {
+    color: var(--page-bg-color);
+}
+.container main section h2::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--text-color);
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: right center;
+    will-change: transform;
+    transition: transform .3s;
+}
+.container main section h2:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+}
+/* 标签 */
+.tag {
+    --tag-color: #fff;
+    --tag-bg-color: #a5a192;
+    position: relative;
+    display: inline-block;
+    margin-left: 12px;
+    padding: 0 6px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 0 2px 2px 0;
+    font-size: 12px;
+    color: var(--tag-color);
+    background-color: var(--tag-bg-color);
+}
+.tag::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--tag-bg-color) transparent transparent;
+}
+/* 日期 */
+.date {
+    font-family: serif;
+}
+/* 链接 */
+.text-link {
+    position: relative;
+    display: inline-block;
+}
+.text-link::after {
     content: "";
     position: absolute;
     bottom: -2px;
@@ -89,28 +167,60 @@ main {
     will-change: transform;
     transition: transform .4s;
 }
-.container a:hover {
+.text-link:hover {
     color: red;
 }
-.container a:hover::after {
+.text-link:hover::after {
     transform: scaleX(0);
 }
-footer {
-    position: absolute;
-    right: 25px;
-    bottom: 20px;
-    font-size: 14px;
-    color: var(--desc-text-color);
+p {
+    line-height: 22px;
+    /* height: 22px; */
 }
-footer .site_name {
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: var(--text-color);
-}
-footer .update {
+.project-list li {
     margin-bottom: 4px;
 }
-footer .iconfont {
-    vertical-align: middle;
-    font-size: inherit;
+.icon-pending {
+    display: inline-block;
+}
+.pending-project:hover .icon-pending {
+    animation: pengdingRotate 2s infinite;
+}
+@keyframes pengdingRotate {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* 夜览按钮 */
+.dark-mode svg {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    transition: fill .5s, stroke .5s;
+}
+body.dark .dark-mode svg {
+    fill: #ffce45;
+    stroke: #ffce45;
+}
+/* 移动端适配 */
+@media (max-width: 780px) {
+    .container {
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+    .container main {
+        width: 100%;
+    }
+    .container aside {
+        padding: unset;
+        max-width: unset;
+        width: 100%;
+        text-align: center;
+    }
 }
